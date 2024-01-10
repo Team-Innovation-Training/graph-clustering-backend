@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.feoyang.infrastructure.statistics.persistence.mapper.user.UserStateMapper">
+
+    <resultMap id="BaseResultMap" type="com.feoyang.infrastructure.statistics.persistence.po.UserPO">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="account" jdbcType="VARCHAR" property="account" ></result>
+        <result column="encrypted_password" jdbcType="VARCHAR" property="encryptedPassword" ></result>
+        <result column="nickname" jdbcType="VARCHAR" property="nickname" ></result>
+        <result column="avatar_url" jdbcType="VARCHAR" property="avatar" ></result>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" ></result>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" ></result>
+    </resultMap>
+
+    <select id="selectUserByAccount" parameterType="string" resultMap="BaseResultMap">
+        select * from user where account = #{account}
+    </select>
+
+    <select id="isAccountExisted" parameterType="string" resultType="int">
+        select count(*) from user where account = #{account}
+    </select>
+
+    <insert id="registerUser" parameterType="com.feoyang.infrastructure.statistics.persistence.po.UserPO">
+        insert into user(account, encrypted_password, nickname, avatar_url)
+        values(#{account}, #{encryptedPassword}, #{nickname}, #{avatar})
+    </insert>
+</mapper>
