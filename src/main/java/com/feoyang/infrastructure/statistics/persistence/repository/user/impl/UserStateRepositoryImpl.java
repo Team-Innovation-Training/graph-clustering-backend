@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 
+import java.nio.CharBuffer;
+import java.util.Optional;
 import java.util.UUID;
 
 /**
@@ -31,7 +33,7 @@ public class UserStateRepositoryImpl implements UserStateRepository {
     public void registerUser(UserRegisterDTO userRegisterDTO) {
         UserPO userPO = new UserPO();
         String account = userRegisterDTO.getAccount();
-        String encodedPassword = passwordEncoder.encode(userRegisterDTO.getPassword());
+        String encodedPassword = passwordEncoder.encode(CharBuffer.wrap(userRegisterDTO.getPassword()));
         String nickname = "Genius";
         String avatar = "https://img.zcool.cn/community/01f4865b2625d3a8012034f70e2a54.jpg@1280w_1l_2o_100sh.jpg";
         userPO.setAccount(account);
@@ -42,11 +44,18 @@ public class UserStateRepositoryImpl implements UserStateRepository {
     }
 
     @Override
-    public Boolean isAccountExisted(String account) {
-        if (userStateMapper.isAccountExisted(account) == 0) {
-            return false;
-        } else {
-            return true;
-        }
+    public int getAccountCount(String account) {
+        return userStateMapper.getAccountCount(account);
     }
+
+    @Override
+    public Optional<String> selectEncryptedPasswordByAccount(String account) {
+        return userStateMapper.selectEncryptedPasswordByAccount(account);
+    }
+
+    @Override
+    public UserPO getUserProfileByAccount(String account) {
+        return userStateMapper.getUserProfileByAccount(account);
+    }
+
 }

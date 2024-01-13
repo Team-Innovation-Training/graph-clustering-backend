@@ -1,7 +1,7 @@
 package com.feoyang.service;
 
 import com.feoyang.application.statistics.dto.user.UserLoginDTO;
-import com.feoyang.domain.statistics.entity.UserLoginEntity;
+import com.feoyang.domain.statistics.entity.UserEntity;
 import com.feoyang.domain.statistics.service.user.UserStateService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +18,10 @@ public class UserStateServiceTests {
     private UserStateService userStateService;
 
     @Test
-    public void testUserStateService() {
-        UserLoginDTO userLoginDTO = new UserLoginDTO("feoyang", "feoyang");
-        UserLoginEntity userLoginEntity = userStateService.loginUser(userLoginDTO);
-        System.out.println(userLoginEntity.toString());
+    public void testLogin() {
+        System.out.println("-------------------------------- start");
+        userStateService.loginUser(new UserLoginDTO("feoyang", "feoyang", true));
+        System.out.println("-------------------------------- end");
     }
 
 }

@@ -1,4 +1,4 @@
-package com.feoyang.application.statistics.api.controller.model.enums;
+package com.feoyang.application.statistics.api.rest.model.enums;
 
 import lombok.Getter;
 
@@ -8,12 +8,12 @@ import lombok.Getter;
  * @description: TODO
  */
 @Getter
-public enum RegisterResultEnum implements ResultEnumInterface {
+public enum RegisterResultEnum implements ResultEnum {
     SUCCESS(0, "注册成功！"),
     EXISTED_ACCOUNT(1, "该账号已被注册！");
 
-    private int code;
-    private String message;
+    private final int code;
+    private final String message;
 
     RegisterResultEnum(int code, String message) {
         this.code = code;

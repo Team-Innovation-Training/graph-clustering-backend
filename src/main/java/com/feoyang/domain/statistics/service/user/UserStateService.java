@@ -1,8 +1,12 @@
 package com.feoyang.domain.statistics.service.user;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.feoyang.application.statistics.api.rest.model.Result;
 import com.feoyang.application.statistics.dto.user.UserLoginDTO;
 import com.feoyang.application.statistics.dto.user.UserRegisterDTO;
-import com.feoyang.domain.statistics.entity.UserLoginEntity;
+import com.feoyang.domain.statistics.entity.UserEntity;
+
+import java.util.Optional;
 
 /**
  * @author: feoyang
@@ -10,7 +14,7 @@ import com.feoyang.domain.statistics.entity.UserLoginEntity;
  * @description: TODO
  */
 public interface UserStateService {
-    UserLoginEntity loginUser(UserLoginDTO userLoginDTO);
-    Boolean registerUser(UserRegisterDTO userRegisterDTO);
-
+    Result loginUser(UserLoginDTO userLoginDTO);
+    Result registerUser(UserRegisterDTO userRegisterDTO);
+    Result getUserProfile();
 }

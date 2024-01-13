@@ -3,6 +3,7 @@ package com.feoyang.domain.statistics.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 /**
  * @author: feoyang
@@ -12,17 +13,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserLoginEntity {
+public class UserEntity {
     private String account;
     private String nickname;
     private String avatar;
     private String createTime;
-    private String token;
-
-    public UserLoginEntity(String account, String nickname, String avatar, String createTime) {
-        this.account = account;
-        this.nickname = nickname;
-        this.avatar = avatar;
-        this.createTime = createTime;
-    }
 }
