@@ -1,4 +1,4 @@
-# Spring Boot 3 + Spring Security 6 + JDK 21
+# Domain Driven Design, DDD
 
 Install dependencies:
 ```
